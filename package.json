@@ -1,0 +1,27 @@
+{
+  "name": "workforcetracker",
+  "version": "1.0.0",
+  "description": "employee tracker that allows interaction with company employee database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delaluz12/workforceTracker.git"
+  },
+  "keywords": [
+    "mysql"
+  ],
+  "author": "delaluz12",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/delaluz12/workforceTracker/issues"
+  },
+  "homepage": "https://github.com/delaluz12/workforceTracker#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^8.1.2",
+    "mysql2": "^2.3.0"
+  }
+}
