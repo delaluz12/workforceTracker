@@ -23,39 +23,21 @@ class Query {
         return this.connection.query('SELECT employee.id, employee.first_name, employee.last_name, roles.title, dept.name AS department, roles.salary, CONCAT(manager.first_name, " ", manager.last_name) AS Manager FROM employee LEFT JOIN roles ON employee.roles_id = roles.id LEFT JOIN dept ON roles.dept_id = dept.id LEFT JOIN employee manager ON employee.manager_id = manager.id;')
     }
     //add dept pass in name only
-    addDept(newDept) {
-        return this.connection.query(`INSERT INTO dept (name) VALUES (${newDept});`, (err, result) => {
-            if (err) {
-              console.log(err);
-            }
-            console.log(result);
-          });
+    newDept(newDept) {
+        return this.connection.query(`INSERT INTO dept (name) VALUES (${newDept});`);
     }
     //add role pass in title, salary and dept # 
-    addRole(title, salary, dept) {
-        return this.connection.query(`INSERT INTO roles (title, salary, dept_id) VALUES (${title}, ${salary}, ${dept});`, (err, result) => {
-            if (err) {
-              console.log(err);
-            }
-            console.log(result);
-          });
+    newRole(title, salary, dept) {
+        return this.connection.query(`INSERT INTO roles (title, salary, dept_id) VALUES (${title}, ${salary}, ${dept});`);
     }
     //add employee pass in first, last, role & manager id #
-    addEmployee(first, last, roleId, managerId){
-        return this.connection.query(`INSERT INTO employee (first_name, last_name, roles_id, manager_id) VALUES (${first}, ${last}, ${roleId}, ${managerId});`, (err, result) => {
-            if(err){
-                console.log(err)
-            }
-            console.log(result)
-        });
+    newEmployee(first, last, roleId, managerId){
+        return this.connection.query(`INSERT INTO employee (first_name, last_name, roles_id, manager_id) VALUES (${first}, ${last}, ${roleId}, ${managerId});`);
     }
     //update employee role pass in employeeId, newRoleId
     updateEmployeeRole(employeeId, newRoleId){
-        return this.connection.query(`UPDATE employee SET roles_id = ${newRoleId} WHERE id = ${employeeId};`, (err, result) => {
-            if (err){
-                console.log(err)
-            }
-            console.log(result)
-        });
+        return this.connection.query(`UPDATE employee SET roles_id = ${newRoleId} WHERE id = ${employeeId};`);
     }
 }
+
+module.exports = new Query(connection);
