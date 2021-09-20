@@ -133,7 +133,7 @@ async function addRole() {
         return dept;
 
     });
-    
+
 
     const { title, salary, dept } = await prompt([
         {
@@ -208,7 +208,7 @@ async function addNewEmployee() {
         }
     ]);
 
-    console.log(roleChoice);
+    
     //query to empl to ask populate manager choice list for inquirer prompt
     const currentEmp = await query.findAllEmp();
     //map to build array for inquirer list's choice prompt
@@ -227,7 +227,7 @@ async function addNewEmployee() {
     };
     // if the emp will not have a manager choice pushed into array from line 199
     managerChoiceArr.push(nullManagerChoice);
-    console.log(managerChoiceArr);
+    
     // ask for manager and grab manager ID from choice to pass into query
     const { managerChoice } = await prompt([
         {
