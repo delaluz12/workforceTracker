@@ -24,19 +24,19 @@ class Query {
     }
     //add dept pass in name only
     newDept(newDept) {
-        return this.connection.query(`INSERT INTO dept (name) VALUES (${newDept});`);
+        return this.connection.query('INSERT INTO dept SET name = ?;', newDept);
     }
     //add role pass in title, salary and dept # 
     newRole(title, salary, dept) {
-        return this.connection.query(`INSERT INTO roles (title, salary, dept_id) VALUES (${title}, ${salary}, ${dept});`);
+        return this.connection.query(`INSERT INTO roles (title, salary, dept_id) VALUES (?, ?, ?);`, [title, salary, dept]);
     }
     //add employee pass in first, last, role & manager id #
     newEmployee(first, last, roleId, managerId){
-        return this.connection.query(`INSERT INTO employee (first_name, last_name, roles_id, manager_id) VALUES (${first}, ${last}, ${roleId}, ${managerId});`);
+        return this.connection.query(`INSERT INTO employee (first_name, last_name, roles_id, manager_id) VALUES (?,?,?,?);`, [first, last, roleId,managerId]);
     }
     //update employee role pass in employeeId, newRoleId
-    updateEmployeeRole(employeeId, newRoleId){
-        return this.connection.query(`UPDATE employee SET roles_id = ${newRoleId} WHERE id = ${employeeId};`);
+    updateEmployeeRole(newRoleId, employeeId){
+        return this.connection.query(`UPDATE employee SET roles_id = ? WHERE id = ?;`,[newRoleId, employeeId]);
     }
 }
 
